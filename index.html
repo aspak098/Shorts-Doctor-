@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shorts Doctor — Shorts क्यों नहीं चल रहा?</title>
+<meta name="description" content="YouTube Shorts diagnostic tool. Short link, spoken text और YouTube Studio screenshots से evidence-based diagnosis तैयार करें.">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="brand" href="#">🩺 Shorts Doctor</a>
+  <button id="theme">☾</button>
+</div></header>
+
+<main class="wrap">
+<section class="hero">
+ <div>
+  <div class="eyebrow">CREATOR DIAGNOSTIC TOOL</div>
+  <h1>आपका Short क्यों नहीं चल रहा?</h1>
+  <p>वीडियो upload नहीं करना है। आपने वीडियो में जो बोला, उसका text दें और YouTube Studio के screenshots upload करें। फिर available evidence के आधार पर diagnosis तैयार करें।</p>
+ </div>
+ <div class="hero-box">
+   <b>यह tool क्या देखेगा?</b>
+   <span>📝 आपने वीडियो में क्या कहा</span>
+   <span>📸 अधिकतम 10 screenshots</span>
+   <span>📊 Shorts analytics</span>
+   <span>📜 Relevant YouTube guidance</span>
+   <span>🔎 Evidence-based reason</span>
+ </div>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">01 • SHORT</div><h2>अपने Short की basic जानकारी दें</h2></div><b class="tag">Required</b></div>
+ <label>Short का link
+   <input id="url" type="url" placeholder="https://youtube.com/shorts/..." />
+ </label>
+ <div class="grid2">
+   <label>वीडियो किस topic पर था?
+     <input id="topic" placeholder="जैसे YouTube tips, education, facts..." />
+   </label>
+   <label>वीडियो किस audience के लिए था?
+     <input id="audience" placeholder="Beginners, students, creators..." />
+   </label>
+ </div>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">02 • SPOKEN TEXT</div><h2>वीडियो में आपने क्या बोला?</h2>
+ <p class="muted">वीडियो upload नहीं करना है। आपने जो कुछ बोला है, वही text में जितना हो सके exactly लिखें।</p></div><b class="tag">Important</b></div>
+ <textarea id="spoken" placeholder="उदाहरण: मैंने वीडियो में कहा था — ..."></textarea>
+ <div class="counter"><span id="words">0 words</span><span id="chars">0 characters</span></div>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">03 • SCREENSHOTS</div><h2>YouTube Studio के screenshots upload करें</h2>
+ <p class="muted">Maximum <b>10 images</b>. जो भी relevant screenshots हैं—analytics, Shorts Feed, retention, traffic source, audience आदि—upload कर दें। Tool को खुद evidence identify करने के लिए design किया गया है।</p></div><b class="count" id="count">0 / 10</b></div>
+ <label class="upload">
+   <input id="images" type="file" accept="image/*" multiple>
+   <strong>📸 Screenshots चुनें</strong>
+   <small>Maximum 10 images</small>
+ </label>
+ <div id="preview" class="preview"></div>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">04 • CHANNEL</div><h2>अपने channel के बारे में बताएं</h2>
+ <p class="muted">हर metric का नाम पता होना जरूरी नहीं। जितनी जानकारी आपको पता है, दें।</p></div></div>
+ <div class="grid2">
+  <label>Channel name<input id="channel" placeholder="आपके channel का नाम"></label>
+  <label>Subscribers<input id="subs" type="number" placeholder="1486"></label>
+  <label>पहले आम तौर पर कितने views आते थे?<input id="oldViews" placeholder="2000–3000"></label>
+  <label>अभी कितने views आ रहे हैं?<input id="newViews" placeholder="जैसे 100–300"></label>
+  <label>यह problem कब से है?<input id="since" placeholder="लगभग 1 महीने से"></label>
+  <label>पहले कौन से Shorts अच्छा चले थे?<input id="viral" placeholder="Topic/title या links, अगर याद हों"></label>
+  <label>अभी कितने Shorts upload किए?<input id="recent" placeholder="जैसे पिछले 30 दिनों में 12"></label>
+  <label>Channel का main topic<input id="channelTopic" placeholder="Education / Tech / Facts..."></label>
+ </div>
+ <label>हाल में क्या बदला? (अगर पता हो)
+   <textarea id="changes" placeholder="Topic, editing, voice, upload time, format, कोई warning/restriction आदि..."></textarea>
+ </label>
+ <label>आपकी असली problem क्या है?
+   <textarea id="problem" placeholder="जैसे पहले हर Short Shorts Feed में जाता था, अब पिछले एक महीने से नहीं जा रहा..."></textarea>
+ </label>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">05 • EXTRA EVIDENCE</div><h2>कुछ और बताना है?</h2></div></div>
+ <label>कोई और जानकारी / observation
+   <textarea id="extra" placeholder="जैसे Search से views आते हैं, notification से आते हैं लेकिन Shorts Feed से नहीं..."></textarea>
+ </label>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">06 • DIAGNOSIS</div><h2>Shorts Doctor चलाएं</h2>
+ <p class="muted">यह frontend evidence collect करता है। Production में backend AI/OCR और current official YouTube documentation जोड़कर automatic diagnosis दिया जाएगा।</p></div></div>
+ <button class="primary" id="analyze">🔍 मेरा Short Check करो</button>
+ <div id="report" class="report hidden"></div>
+</section>
+
+<section class="panel">
+ <div class="head"><div><div class="eyebrow">07 • VOICE</div><h2>Diagnosis सुनें</h2></div></div>
+ <button class="secondary" id="speak">🔊 Report सुनाएं</button>
+ <button class="secondary" id="stop">Stop</button>
+</section>
+
+<div class="trust"><b>Trust rule:</b> Tool private YouTube algorithm को “देखने” का दावा नहीं करेगा। हर result को <b>Observed / Likely / Possible</b> के रूप में अलग किया जाएगा और evidence के बिना “YouTube की गलती” नहीं कहा जाएगा।</div>
+</main>
+
+<footer><div class="wrap">Shorts Doctor • Evidence-first YouTube Shorts diagnosis</div></footer>
+<script src="app.js"></script>
+</body>
+</html>
